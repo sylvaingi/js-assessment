@@ -11,12 +11,17 @@ define(function() {
     },
 
     remove : function(arr, item) {
-        arr.splice(_.indexOf(arr,item), 1);
-        return arr;
+        return _.reject(arr,function(i){
+            return i === item;
+        });
     },
     
     removeWithoutCopy : function(arr, item) {
-
+        var idx = -1;
+        while((idx = _.indexOf(arr, item)) !== -1){
+            arr.splice(idx, 1);
+        }
+        return arr;
     },
 
     append : function(arr, item) {

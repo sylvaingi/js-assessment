@@ -17,7 +17,13 @@ define(function() {
     },
 
     makeClosures : function(arr, fn) {
-
+        var funcs = [];
+        _.forEach(arr,function(val){
+            funcs.push(function(){
+                return fn(val);
+            });
+        });
+        return funcs;
     },
 
     partial : function(fn, str1, str2) {

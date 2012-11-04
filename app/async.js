@@ -2,12 +2,12 @@ if (typeof define !== 'function') { var define = require('amdefine')(module); }
 
 define([ 'jquery' ], function($) {
   return {
-    async : function() {
+    async : function(flag) {
         var deferred = $.Deferred();
         _.defer(function(){
-            deferred.resolve(true);
+            deferred.resolve(flag);
         });
-        return deferred;
+        return deferred.promise();
     },
 
     manipulateRemoteData : function(url) {
@@ -15,7 +15,7 @@ define([ 'jquery' ], function($) {
         $.getJSON(url, function(data){
             deferred.resolve(_.pluck(data.people, 'name').sort());
         });
-        return deferred;
+        return deferred.promise();
     }
   };
 });
