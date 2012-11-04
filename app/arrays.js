@@ -14,6 +14,10 @@ define(function() {
         arr.splice(_.indexOf(arr,item), 1);
         return arr;
     },
+    
+    removeWithoutCopy : function(arr, item) {
+
+    },
 
     append : function(arr, item) {
         arr.push(item);

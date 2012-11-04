@@ -13,17 +13,31 @@ define([
 
     it("you should be able to determine the location of an item in an array", function() {
       expect(answers.indexOf(a, 3)).to.be(2);
+      expect(answers.indexOf(a, 5)).to.be(-1);
     });
 
     it("you should be able to add the values of an array", function() {
       expect(answers.sum(a)).to.be(10);
     });
 
-    it("you should be able to remove an item from an array", function() {
+    it("you should be able to remove a value from an array", function() {
+      a.push(2); // Make sure the value appears more than one time
       var result = answers.remove(a, 2);
 
       expect(result).to.have.length(3);
       expect(result.join(' ')).to.be('1 3 4');
+    });
+
+    it("you should be able to remove a value from an array, returning the original array", function() {
+      a.push( 2 );
+
+      var result = answers.removeWithoutCopy(a, 2);
+
+      expect(result).to.have.length(3);
+      expect(result.join(' ')).to.be('1 3 4');
+
+      // make sure that you return the same array instance
+      expect(result).equal(a);
     });
 
     it("you should be able to add an item to the end of an array", function() {

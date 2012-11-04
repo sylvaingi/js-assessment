@@ -16,6 +16,10 @@ define(function() {
         };
     },
 
+    makeClosures : function(arr, fn) {
+
+    },
+
     partial : function(fn, str1, str2) {
         return function(arg1){
             return fn.call(null,str1,str2,arg1);
@@ -35,16 +39,6 @@ define(function() {
         return function(){
             return fn.apply(null, curryArgs.concat(Array.prototype.slice.call(arguments)));
         };
-    },
-
-    makeClosures : function(arr, fn) {
-        var func = [];
-        _.each(arr, function(item){
-            func.push(function(){
-                return fn(item);
-            });
-        });
-        return func;
     }
 };
 
